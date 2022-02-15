@@ -1,8 +1,28 @@
-# Interview Coding Base
+# The assignment
 
+This assignment is a rough starting point for the backend & frontend
+assignment. Depending on your specialty you can find details below.
+If you are applying as a fullstack developer you should look at both
+sections below.
 
-## The project
+## Backend assignment
 
+The backend assignment will focus on API design and making sure there
+is new functionality exposed to the frontend. As you can see there
+is already a list of apartments you are starting out with. Other 
+functionality should be implemented:
+
+Customers should be able to:
+
+- update, delete & create apartments
+- be able to group apartments into buildings
+- create a rental agreement for an apartment
+
+Additionally, you can add users and companies such that the system 
+can be used by multiple companies in parallel. If you have other 
+ideas to show what you can do on top of the above-mentioned tasks 
+feel free to continue but remember that the whole time invested 
+should not exceed 6-8 hours. 
 
 ### Prerequisites for running
 

@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -29,26 +28,3 @@ class Apartment(models.Model):
 
     def can_create(self, user):
         return True
-
-
-def user_can_read(self, user):
-    return True
-
-
-def user_can_update(self, user):
-    return self == user
-
-
-def user_can_delete(self, user):
-    return user.is_staff
-
-
-def user_can_create(self, user):
-    return user.is_staff
-
-
-User.can_read = user_can_read
-User.can_update = user_can_update
-User.can_delete = user_can_delete
-User.can_create = user_can_create
-

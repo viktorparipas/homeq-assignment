@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -49,4 +50,18 @@ class Building(models.Model):
         return True
 
     def can_create(self, user):
+        return True
+
+
+class RentalAgreement(models.Model):
+    apartment = models.ForeignKey('Apartment', related_name='rental_contracts', on_delete=models.PROTECT)
+    tenant = models.ForeignKey(User, related_name='rental_contracts', on_delete=models.PROTECT)
+
+    start_date = models.DateField(auto_now=True)
+    end_date = models.DateField(default=None, blank=True, null=True)
+
+    def can_create(self, user):
+        return True
+
+    def can_read(self, user):
         return True

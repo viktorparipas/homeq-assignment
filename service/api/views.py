@@ -26,3 +26,14 @@ class BuildingViewSet(
 
     def get_queryset(self):
         return models.Building.objects.all()
+
+
+class RentalAgreementViewSet(
+    CreateModelMixInWithObjectPermissionCheck,
+    ViewMixIn,
+    ReadOnlyModelViewSet
+):
+    serializer_class = serializers.RentalAgreementSerializer
+
+    def get_queryset(self):
+        return models.RentalAgreement.objects.all()

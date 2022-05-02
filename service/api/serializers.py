@@ -32,3 +32,17 @@ class BuildingSerializer(ModelSerializer):
             'longitude',
         )
 
+
+class RentalAgreementSerializer(ModelSerializer):
+
+    class Meta:
+        model = models.RentalAgreement
+        fields = (
+            'id',
+            'apartment',
+            'start_date',
+            'end_date',
+            'tenant',
+        )
+
+

@@ -15,3 +15,14 @@ class ApartmentViewSet(
 
     def get_queryset(self):
         return models.Apartment.objects.all()
+
+
+class BuildingViewSet(
+    CreateModelMixInWithObjectPermissionCheck,
+    ViewMixIn,
+    ReadOnlyModelViewSet
+):
+    serializer_class = serializers.BuildingSerializer
+
+    def get_queryset(self):
+        return models.Building.objects.all()

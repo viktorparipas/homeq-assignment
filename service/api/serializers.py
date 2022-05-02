@@ -21,3 +21,18 @@ class ApartmentSerializer(ModelSerializer):
             'floor',
             'area',
         )
+
+
+class BuildingSerializer(ModelSerializer):
+
+    class Meta:
+        model = models.Building
+        fields = (
+            'id',
+            'street',
+            'street_number',
+            'city',
+            'latitude',
+            'longitude',
+        )
+

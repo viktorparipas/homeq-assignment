@@ -17,13 +17,15 @@ class Apartment(models.Model):
 
     description = models.TextField()
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "street": self.street,
-            "street_number": self.street_number,
-            "city": self.city,
-            "rent": self.rent,
-            "latitude": self.latitude,
-            "longitude": self.longitude
-        }
+    def can_read(self, user):
+        return True
+
+    def can_update(self, user):
+        return True
+
+    def can_delete(self, user):
+        return True
+
+    def can_create(self, user):
+        return True
+

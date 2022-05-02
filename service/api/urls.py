@@ -1,8 +1,10 @@
 from django.urls import path
+from rest_framework import routers
 
-from .views import ApartmentsView
+from .views import ApartmentViewSet
 
 
-urlpatterns = [
-    path("apartments/", ApartmentsView.as_view()),
-]
+router = routers.SimpleRouter()
+router.register(r'apartments', ApartmentViewSet, 'apartments')
+
+urlpatterns = router.urls

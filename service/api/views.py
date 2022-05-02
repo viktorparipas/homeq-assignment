@@ -1,11 +1,11 @@
-from django.http import JsonResponse
-from django.views import View
-from .models import Apartment
+from rest_framework.viewsets import ReadOnlyModelViewSet
+
+from . import models, serializers
+from .framework import ViewMixIn
 
 
-class ApartmentsView(View):
+class ApartmentViewSet(ViewMixIn, ReadOnlyModelViewSet):
+    serializer_class = serializers.ApartmentSerializer
 
-    def get(self, request):
-        apartments = Apartment.objects.all()
-        serialized_data = [apartment.serialize() for apartment in apartments]
-        return JsonResponse(serialized_data, safe=False)
+    def get_queryset(self):
+        return models.Apartment.objects.all()

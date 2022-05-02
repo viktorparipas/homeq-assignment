@@ -11,12 +11,8 @@ class ApartmentSerializer(ModelSerializer):
         model = models.Apartment
         fields = (
             'id',
-            'street',
-            'street_number',
-            'city',
+            'building',
             'rent',
-            'latitude',
-            'longitude',
             'rooms',
             'floor',
             'area',

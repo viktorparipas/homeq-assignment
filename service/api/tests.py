@@ -80,20 +80,18 @@ class ApartmentViewSetTest(TestCase):
         self.user.save()
         self.client = get_logged_in_client(self.user)
 
+        building = models.Building.objects.get(
+            street="Skyttegatan", street_number='7B', city="Eskilstuna"
+        )
+        self.number_of_apartments = models.Apartment.objects.count()
         payload = {
             "id": '42',
-            "street": "Skyttegatan",
-            "street_number": "7B",
-            "city": "Eskilstuna",
             "rent": 7938,
-            "latitude": "59.3668802",
-            "longitude": "16.4982711",
             "rooms": 2,
             "floor": 0,
             "area": 50,
         }
-        self.number_of_apartments = models.Apartment.objects.count()
-        self.apartment = models.Apartment.objects.create(**payload)
+        self.apartment = models.Apartment.objects.create(building=building, **payload)
 
         self.list_url = reverse('apartments-list')
         self.detail_url = reverse('apartments-detail', kwargs=dict(pk=self.apartment.id))
@@ -119,12 +117,8 @@ class ApartmentViewSetTest(TestCase):
     def test_create(self):
         data = {
             "id": '43',
-            "street": "Skyttegatan",
-            "street_number": "7B",
-            "city": "Eskilstuna",
+            "building": self.apartment.building.id,
             "rent": 7938,
-            "latitude": "59.3668802",
-            "longitude": "16.4982711",
             "rooms": 2,
             "floor": 0,
             "area": 50,
@@ -132,6 +126,7 @@ class ApartmentViewSetTest(TestCase):
         response = self.client.post(self.list_url, data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['id'], '43')
+        self.assertEqual(response.data['building'], self.apartment.building.id)
 
     def test_delete(self):
         response = self.client.delete(self.detail_url)

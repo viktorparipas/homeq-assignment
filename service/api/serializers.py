@@ -17,4 +17,7 @@ class ApartmentSerializer(ModelSerializer):
             'rent',
             'latitude',
             'longitude',
+            'rooms',
+            'floor',
+            'area',
         )

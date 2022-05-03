@@ -19,61 +19,6 @@ def get_logged_in_client(user):
     return client
 
 
-# class UserViewSetTest(TestCase):
-#     def setUp(self) -> None:
-#         self.user = User.objects.create_user(username='Test')
-#         self.user.set_password(TEST_PASSWORD)
-#         self.user.save()
-#         self.client = get_logged_in_client(self.user)
-#
-#         self.staff_user = User.objects.create_user(username='admin')
-#         self.staff_user.set_password(TEST_PASSWORD)
-#         self.staff_user.is_staff = True
-#         self.staff_user.save()
-#         self.staff_client = get_logged_in_client(self.staff_user)
-#
-#         self.list_url = reverse('user-list')
-#         self.detail_url = reverse('user-detail', kwargs=dict(pk=self.user.id))
-#
-#     def test_list(self):
-#         response = self.client.get(self.list_url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         self.assertEqual(len(response.data), 2)
-#
-#     def test_list_unauthenticated(self):
-#         response = APIClient().get(self.list_url)
-#         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-#
-#     def test_retrieve(self):
-#         response = self.client.get(self.detail_url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-#         self.assertEqual(response.data['username'], self.user.username)
-#
-#     def test_retrieve_unauthenticated(self):
-#         response = APIClient().get(self.detail_url)
-#         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-#
-#     def test_create(self):
-#         data = {
-#             'username': 'Testname',
-#             'password': TEST_PASSWORD,
-#             'first_name': 'Test',
-#             'last_name': 'Testsson',
-#         }
-#         response = self.client.post(self.list_url, data=data)
-#         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-#
-#         response = self.staff_client.post(self.list_url, data=data)
-#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         self.assertEqual(response.data['first_name'], 'Test')
-#
-#     def test_delete(self):
-#         response = self.client.delete(self.detail_url)
-#         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-#
-#         response = self.staff_client.delete(self.detail_url)
-#         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
 # TODO: Unit tests seem to use the same database
 class ApartmentViewSetTest(TestCase):
     def setUp(self) -> None:
